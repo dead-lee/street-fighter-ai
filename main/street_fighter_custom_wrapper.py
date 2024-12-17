@@ -97,8 +97,9 @@ class StreetFighterCustomWrapper(gym.Wrapper):
         elif curr_oppont_health < 0:
             # custom_reward = curr_player_health * self.reward_coeff # Use the remaining health points of player as reward.
                                                                 # Multiply by reward_coeff to make the reward larger than the penalty to avoid cowardice of agent.
-
-            # custom_reward = math.pow(self.full_hp, (5940 - self.total_timesteps) / 5940) * self.reward_coeff # Use the remaining time steps as reward.
+            
+            # # Use the remaining time steps as reward.
+            # custom_reward = math.pow(self.full_hp, (5940 - self.total_timesteps) / 5940) * self.reward_coeff 
             custom_reward = math.pow(self.full_hp, (curr_player_health + 1) / (self.full_hp + 1)) * self.reward_coeff
             custom_done = True
 
